@@ -1,14 +1,14 @@
 package com.amfam.reskill.insuranceapp.insuranceapp;
 
-public class Claim {
+public class InsuranceClaim {
     //Private claim variables
     private Integer id;
     private String claim;
     private Boolean paid;
-    private Float premium;
+    private Double premium;
 
     //Constructor
-    public Claim(Integer id, String claim, Boolean paid, Float premium) {
+    public InsuranceClaim(Integer id, String claim, Boolean paid, Double premium) {
         this.id = id;
         this.claim = claim;
         this.paid = paid;
@@ -40,11 +40,11 @@ public class Claim {
         this.paid = paid;
     }
 
-    public Float getPremium() {
+    public Double getPremium() {
         return premium;
     }
 
-    public void setPremium(Float paid) {
+    public void setPremium(Double premium) {
         this.premium = premium;
     }
     

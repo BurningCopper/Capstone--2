@@ -2,16 +2,16 @@ package com.amfam.reskill.insuranceapp.insuranceapp;
 
 import java.util.ArrayList;
 
-public class Policy {
-    //Policy variables
+public class InsurancePolicy {
+    //InsurancePolicy variables
     private Integer id;
     private String policy;
     private String name;
-    private Float premium;
-    private ArrayList<Claim> claims;
+    private Double premium;
+    private ArrayList<InsuranceClaim> claims;
 
     //Constructor
-    public Policy(Integer id, String policy, String name, Float premium) {
+    public InsurancePolicy(Integer id, String policy, String name, Double premium) {
         this.id = id;
         this.policy = policy;
         this.name = name;
@@ -36,15 +36,15 @@ public class Policy {
         this.name = name;
     }
 
-    public Float getPremium() {
+    public Double getPremium() {
         return premium;
     }
 
-    public ArrayList<Claim> getClaims() {
+    public ArrayList<InsuranceClaim> getClaims() {
         return claims;
     }
 
-    public void setClaims(ArrayList<Claim> claims) {
+    public void setClaims(ArrayList<InsuranceClaim> claims) {
         this.claims = claims;
     }
 }
