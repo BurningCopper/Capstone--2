@@ -1,4 +1,4 @@
-package com.amfam.reskill.InsuranceApp;
+package com.amfam.reskill.insuranceapp.insuranceapp;
 
 import java.security.Policy;
 import java.util.ArrayList;
@@ -20,20 +20,18 @@ public class RestApiInsurance {
         return Database.policies;
     }
     
-    @GetMapping("/policies/{id}")
-    public Optional<Map<String, Object>> getPolicyById(@PathVariable Integer id) {
+    @GetMapping("/{id}")
+    public Optional<Policy>> getPolicyById(@PathVariable Integer id) {
         for (Policy policy: Database.policies) {
-            for (Policy policy: policy.getPolicies()) {
-                if (policy.getID().equals(id)) {
-                    return Optional.of(mapPolicy(policy));
-                }
+            if (policy.getID().equals(id)) {
+                return Optional.of(policy));
             }
         }
         return Optional.empty();
     }
 
-    @GetMapping("policies/claims/{id}")
-    public Optional<Map<String, Object>> getClaimById(PathVariable String) {
+    @GetMapping("/claims/{id}")
+    public Optional<Map<String, Object>> getClaimById(@PathVariable Integer id) {
         for (Policy policy: Database.policies) {
             for (Policy policy: policy.getPolicies()) {
                 if (policy.getID().equals(id)) {
@@ -41,5 +39,14 @@ public class RestApiInsurance {
                 }
             }
         }
+        return Optional.empty();
+    }
+
+    private Map<String, Object> mapPolicy(Policy policy) {
+        Map<String, Object> policyMap = new HashMap<>();
+        policyMap.put("id", policy.getID());
+        policyMap.put("claim", policy.getClaims());
+        policyMap.put("paid", policy.getPaid());
+        policyMap.put("premium", policy.getPremium());
     }
 }
