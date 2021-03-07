@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class InsurancePolicy {
     //InsurancePolicy variables
     private Integer id;
-    private String policy;
+    // private String policy;
     private String name;
     private Double premium;
     private ArrayList<InsuranceClaim> claims;
@@ -13,7 +13,7 @@ public class InsurancePolicy {
     //Constructor
     public InsurancePolicy(Integer id, String policy, String name, Double premium) {
         this.id = id;
-        this.policy = policy;
+        // this.policy = policy;
         this.name = name;
         this.premium = premium;
         this.claims = new ArrayList<>();
