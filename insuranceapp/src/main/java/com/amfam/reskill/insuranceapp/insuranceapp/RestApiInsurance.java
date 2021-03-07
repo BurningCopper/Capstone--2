@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/policies")
 public class RestApiInsurance {
     @GetMapping
-    public Iterable<Policy> getPolicies() {
+    public Iterable<InsurancePolicy> getPolicies() {
         return Database.policies;
     }
     
     @GetMapping("/{id}")
-    public Optional<Policy>> getPolicyById(@PathVariable Integer id) {
-        for (Policy policy: Database.policies) {
-            if (policy.getID().equals(id)) {
-                return Optional.of(policy));
+    public Optional<InsurancePolicy> getPolicyById(@PathVariable Integer id) {
+        for (InsurancePolicy policy: Database.policies) {
+            if (policy.getId().equals(id)) {
+                return Optional.of(policy);
             }
         }
         return Optional.empty();
@@ -32,21 +32,22 @@ public class RestApiInsurance {
 
     @GetMapping("/claims/{id}")
     public Optional<Map<String, Object>> getClaimById(@PathVariable Integer id) {
-        for (Policy policy: Database.policies) {
-            for (Policy policy: policy.getPolicies()) {
-                if (policy.getID().equals(id)) {
-                    return Optional.of(mapClaim(claim));
+        for (InsurancePolicy policy: Database.policies) {
+            for (InsuranceClaim claim: policy.getClaims()) {
+                if (claim.getId().equals(id)) {
+                    return Optional.of(mapPolicy(policy));
                 }
             }
         }
         return Optional.empty();
     }
 
-    private Map<String, Object> mapPolicy(Policy policy) {
+    private Map<String, Object> mapPolicy(InsurancePolicy policy) {
         Map<String, Object> policyMap = new HashMap<>();
-        policyMap.put("id", policy.getID());
+        policyMap.put("id", policy.getId());
         policyMap.put("claim", policy.getClaims());
-        policyMap.put("paid", policy.getPaid());
+        // policyMap.put("paid", policy.getPaid());
         policyMap.put("premium", policy.getPremium());
+        return policyMap;
     }
 }
