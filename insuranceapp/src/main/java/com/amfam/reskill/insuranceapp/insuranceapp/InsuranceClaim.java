@@ -5,14 +5,14 @@ public class InsuranceClaim {
     private Integer id;
     private String claim;
     private Boolean paid;
-    private Double premium;
+    private Double amount;
 
     //Constructor
-    public InsuranceClaim(Integer id, String claim, Boolean paid, Double premium) {
+    public InsuranceClaim(Integer id, String claim, Boolean paid, Double amount) {
         this.id = id;
         this.claim = claim;
         this.paid = paid;
-        this.premium = premium;
+        this.amount = amount;
     }
 
     //Property getters/setters
@@ -40,12 +40,12 @@ public class InsuranceClaim {
         this.paid = paid;
     }
 
-    public Double getPremium() {
-        return premium;
+    public Double getAmount() {
+        return amount;
     }
 
-    public void setPremium(Double premium) {
-        this.premium = premium;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
     
 }

@@ -35,19 +35,28 @@ public class RestApiInsurance {
         for (InsurancePolicy policy: Database.policies) {
             for (InsuranceClaim claim: policy.getClaims()) {
                 if (claim.getId().equals(id)) {
-                    return Optional.of(mapPolicy(policy));
+                    return Optional.of(mapClaim(claim));
                 }
             }
         }
         return Optional.empty();
     }
 
-    private Map<String, Object> mapPolicy(InsurancePolicy policy) {
-        Map<String, Object> policyMap = new HashMap<>();
-        policyMap.put("id", policy.getId());
-        policyMap.put("claim", policy.getClaims());
-        // policyMap.put("paid", policy.getPaid());
-        policyMap.put("premium", policy.getPremium());
-        return policyMap;
+    // private Map<String, Object> mapPolicy(InsurancePolicy policy) {
+    //     Map<String, Object> policyMap = new HashMap<>();
+    //     policyMap.put("id", policy.getId());
+    //     policyMap.put("claim", policy.getClaims());
+    //     // policyMap.put("paid", policy.getPaid());
+    //     policyMap.put("premium", policy.getPremium());
+    //     return policyMap;
+    // }
+
+    private Map<String, Object> mapClaim(InsuranceClaim claim) {
+        Map<String, Object> claimMap = new HashMap<>();
+        claimMap.put("id", claim.getId());
+        claimMap.put("claim", claim.getClaim());
+        claimMap.put("paid", claim.getPaid());
+        claimMap.put("amount", claim.getAmount());
+        return claimMap;
     }
 }
